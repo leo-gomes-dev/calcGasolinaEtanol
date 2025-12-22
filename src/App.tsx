@@ -64,7 +64,10 @@ function App() {
           src={logoImg}
           alt="Logo da calculadora de gasolina ou alcool"
         />
-        <h1 className="title">Calcule qual combustível é mais vantajoso</h1>
+        <h1 className="title">Calculadora de Combustível</h1>
+        <h4 className="title_h4">
+          Calcule qual combustível é mais vantajoso usar
+        </h4>
 
         <form className="form" onSubmit={calcular}>
           <label>Álcool (preço por litro):</label>

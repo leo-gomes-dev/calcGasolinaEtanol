@@ -1,5 +1,7 @@
 .container {
   max-width: 720px;
+  max-height: 100vh;
+  overflow-y: hidden;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -15,7 +17,13 @@
 .title {
   color: #fff;
   text-align: center;
-  margin: 24px 0;
+  margin: 10px 0;
+}
+.title_h4 {
+  color: #fff;
+  text-align: center;
+  font-weight: lighter;
+  margin: 0px 5px 15px 15px;
 }
 
 .form label {
