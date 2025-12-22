@@ -1,11 +1,12 @@
-*{
+* {
   margin: 0 auto;
   font-family: sans-serif;
   box-sizing: border-box;
 }
 
-body{
-  background-color: #22272e;
+body {
+  /* background-color: #22272e; */
+  background-color: #01090b;
   height: 100vh;
   display: flex;
   justify-content: center;
