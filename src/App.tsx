@@ -1,11 +1,13 @@
 import { FormEvent, useState } from "react";
 import "./App.css";
-import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
+import {
+  FaGithub,
+  FaLinkedin,
+  FaInstagram,
+  FaQuestionCircle,
+} from "react-icons/fa"; // Adicionado ícone de ajuda
 
 import logoImg from "./assets/gasolina-calc.png";
-
-// Calculo dividir o alcool / gasolina
-// se o resultado for menor de 0.7 compesa usar o alcool
 
 interface InfoProps {
   title: string;
@@ -18,6 +20,7 @@ function App() {
   const [alcoolInput, setAlcoolInput] = useState<string>("");
   const [info, setInfo] = useState<InfoProps>();
   const [title, setTitle] = useState(true);
+  const [showModal, setShowModal] = useState(false); // Estado para o modal
 
   function calcular(event: FormEvent) {
     event.preventDefault();
@@ -25,7 +28,7 @@ function App() {
     const gasolina = Number(gasolinaInput);
     const alcool = Number(alcoolInput);
 
-    if (gasolina === 0 || alcool === 0 || isNaN(gasolina) || isNaN(alcool)) {
+    if (gasolina <= 0 || alcool <= 0 || isNaN(gasolina) || isNaN(alcool)) {
       alert("Preencha os campos com valores válidos.");
       return;
     }
@@ -49,11 +52,10 @@ function App() {
   }
 
   function formatarMoeda(valor: number) {
-    const valorFormatado = valor.toLocaleString("pt-br", {
+    return valor.toLocaleString("pt-br", {
       style: "currency",
       currency: "BRL",
     });
-    return valorFormatado;
   }
 
   return (
@@ -65,17 +67,19 @@ function App() {
           alt="Logo da calculadora de gasolina ou alcool"
         />
         <h1 className="title">Calculadora de Combustível</h1>
-        <h4 className="title_h4">
-          Calcule qual combustível é mais vantajoso usar
-        </h4>
+
+        {/* Botão de Informação */}
+        <button className="btn-info" onClick={() => setShowModal(true)}>
+          <FaQuestionCircle size={18} /> Entenda o cálculo
+        </button>
 
         <form className="form" onSubmit={calcular}>
           <label>Álcool (preço por litro):</label>
           <input
             className="input"
             type="number"
-            placeholder="Digite um valor"
-            min="1"
+            placeholder="Ex: 3.99"
+            min="0.01"
             step="0.01"
             required
             value={alcoolInput}
@@ -86,14 +90,15 @@ function App() {
           <input
             className="input"
             type="number"
-            placeholder="Digite um valor"
-            min="1"
+            placeholder="Ex: 5.89"
+            min="0.01"
             step="0.01"
             required
             value={gasolinaInput}
             onChange={(e) => setGasolinaInput(e.target.value)}
           />
-          {title === false && (
+
+          {title === false ? (
             <input
               className="button-limpar"
               type="button"
@@ -105,21 +110,59 @@ function App() {
                 setTitle(true);
               }}
             />
-          )}
-          {title === true && (
+          ) : (
             <input className="button" type="submit" value="Calcular" />
           )}
         </form>
 
-        {info && Object.keys(info).length > 0 && (
+        {info && (
           <section className="result">
             <h2 className="result-title">{info.title}</h2>
-
             <span>Álcool {info.alcool}</span>
             <span>Gasolina {info.gasolina}</span>
           </section>
         )}
+
+        {/* modal para mostrar informações sobre o cálculo */}
+        {showModal && (
+          <div className="modal-overlay" onClick={() => setShowModal(false)}>
+            <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+              <h2>Como funciona o cálculo?</h2>
+              <p>Dividimos o preço do litro do Álcool pelo da Gasolina.</p>
+              <ul>
+                <li>
+                  <strong>Abaixo de 0,70:</strong> Álcool compensa.
+                </li>
+                <li>
+                  <strong>Acima de 0,70:</strong> Gasolina compensa.
+                </li>
+                <li>
+                  <strong>Igual a 0,70:</strong> Indiferente.
+                </li>
+              </ul>
+              <p>
+                <small>
+                  O fator 0,70 é usado porque o etanol rende, em média, 70% da
+                  gasolina.
+                </small>
+              </p>
+
+              <div className="modal-links">
+                <strong>Fonte:</strong>
+                <p>Simulador ANP, Calculadora G1</p>
+              </div>
+
+              <button
+                className="button-close"
+                onClick={() => setShowModal(false)}
+              >
+                Fechar
+              </button>
+            </div>
+          </div>
+        )}
       </main>
+
       <footer className="footer">
         <p>
           By <strong>Leo Gomes Developer</strong> &copy; 2025
@@ -129,7 +172,6 @@ function App() {
             href="https://github.com/leo-gomes-dev"
             target="_blank"
             rel="noreferrer"
-            aria-label="GitHub"
           >
             <FaGithub size={24} />
           </a>
@@ -137,7 +179,6 @@ function App() {
             href="https://www.linkedin.com/in/leo-gomes-dev/"
             target="_blank"
             rel="noreferrer"
-            aria-label="LinkedIn"
           >
             <FaLinkedin size={24} />
           </a>
@@ -145,7 +186,6 @@ function App() {
             href="https://www.instagram.com/leogomes_dev/"
             target="_blank"
             rel="noreferrer"
-            aria-label="Instagram"
           >
             <FaInstagram size={24} />
           </a>
