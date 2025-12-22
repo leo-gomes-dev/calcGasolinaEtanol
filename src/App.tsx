@@ -122,7 +122,7 @@ function App() {
       </main>
       <footer className="footer">
         <p>
-          Desenvolvido por <strong>Leo Gomes Developer</strong> &copy; 2025
+          By <strong>Leo Gomes Developer</strong> &copy; 2025
         </p>
         <div className="footer-links">
           <a
