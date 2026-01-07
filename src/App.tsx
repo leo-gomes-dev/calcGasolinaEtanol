@@ -165,7 +165,7 @@ function App() {
 
       <footer className="footer">
         <div className="text-apoio">
-          <h3>☕ Gostou do projeto?</h3>
+          <h3>Gostou do projeto?</h3>
           <p>Se este trabalho te ajudou, considere me pagar um café!</p>
 
           <a
