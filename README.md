@@ -1,54 +1,27 @@
-# React + TypeScript + Vite
+# ⛽ Calculadora de Combustível (Fuel App)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> **Etanol ou Gasolina?** 🚗
+> Uma ferramenta utilitária desenvolvida para auxiliar motoristas na tomada de decisão rápida. O projeto foca na aplicação de lógica de negócios precisa dentro de uma interface extremamente leve e funcional.
 
-Currently, two official plugins are available:
+Esta aplicação resolve um problema cotidiano através de uma experiência digital otimizada, demonstrando como transformar regras de cálculo em uma ferramenta de alta usabilidade.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🔗 Live Demo
+🚀 **Acesse agora:** [combustivel.leogomesdev.com](https://combustivel.leogomesdev.com)
 
-## Expanding the ESLint configuration
+## 🛠️ Expertise Técnica Aplicada
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+O desenvolvimento deste projeto priorizou a rapidez de acesso e a precisão da lógica:
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+*   **Frontend (Next.js):** Utilização do framework para garantir performance superior e renderização eficiente, permitindo que a ferramenta esteja pronta para uso instantaneamente.
+*   **Lógica de Negócio Aplicada:** Implementação rigorosa do algoritmo de viabilidade (regra dos 70%), convertendo variáveis de entrada em resultados acionáveis em tempo real.
+*   **Design Mobile-First:** Interface pensada para o motorista no posto de combustível. Foco total em **UI/UX intuitiva**, com botões e campos de fácil interação em dispositivos móveis.
+*   **Arquitetura Limpa:** Código modularizado que separa a lógica de cálculo da camada de visualização, facilitando manutenções e evoluções.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 💡 Funcionalidades Principais
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- ⚡ **Cálculo Instantâneo:** Resultado imediato conforme a digitação dos valores.
+- 📱 **Interface Otimizada:** Design responsivo e adaptado para uso com uma só mão.
+- 🎯 **Precisão:** Lógica matemática sólida para economia real no abastecimento.
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+---
+Desenvolvido por **Leo Gomes** | [leogomesdev.com](https://leogomesdev.com)
